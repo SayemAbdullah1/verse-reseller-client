@@ -1,10 +1,11 @@
-import logo from './logo.svg';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import route from './Routes/Route/Route';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello react</h1>
+    <div className='max-w-[1440px] mx-auto'>
+      <RouterProvider router={route}></RouterProvider>
     </div>
   );
 }
