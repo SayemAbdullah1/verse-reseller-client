@@ -26,7 +26,7 @@ const CategoryDetails = () => {
 
                 }
             </div>
-            <BookingModal></BookingModal>
+            {/* <BookingModal></BookingModal> */}
         </div>
     );
 };
