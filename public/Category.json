@@ -1,0 +1,71 @@
+[
+    {
+        "Category_id": "01",
+        "name": "Microbus"
+    },
+    {
+        "Category_id": "02",
+        "name": "Luxury car"
+    },
+    {
+        "Category_id": "03",
+        "name": "Electric car"
+    },
+
+
+
+    {
+        "category_id": "01",
+        "name": "Toyota hiace",
+        "picture": "https://prod-media-eng.dhakatribune.com/uploads/2021/09/unnamed-1630850924346.jpg",
+        "resalePrice": "8580",
+        "originalPrice": "10000",
+        "useYears": "4",
+        "sellerName": "Mark"
+    },
+    {
+        "category_id": "01",
+        "name": "Toyota hiace 2018",
+        "picture": "https://img-ap-2.trovit.com/img2ph/ADn1_7GD1C/ADn1_7GD1C.1_11.jpg",
+        "resalePrice": "8500",
+        "originalPrice": "12890",
+        "useYears": "2.9",
+        "sellerName": "Anotoy"
+    },
+    {
+        "category_id": "02",
+        "name": "Genesis G80",
+        "picture": "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/1-genesis-g80-2021-uk-fd-hero-front.jpg",
+        "resalePrice": "80000",
+        "originalPrice": "89000",
+        "useYears": "2",
+        "sellerName": "Sabur"
+    },
+    {
+        "category_id": "02",
+        "name": "Mercedes Benz 280 S Maybach 680 4Matic Aut.",
+        "picture": "https://www.carmart.ng/public/blog/wp-content/uploads/2022/01/The-2022-Mercedes-Maybach-has-the-Worlds-Most-Luxurious-Interior.jpg",
+        "resalePrice": "100000",
+        "originalPrice": "95600",
+        "useYears": "1.5",
+        "sellerName": "Wahid"
+    },
+    {
+        "category_id": "03",
+        "name": "Kia EV6",
+        "picture": "https://car-images.bauersecure.com/wp-images/4433/electric_car_automatic_gears.jpeg",
+        "resalePrice": "45000",
+        "originalPrice": "52000",
+        "useYears": "1.8",
+        "sellerName": "Lucas"
+    },
+    {
+        "category_id": "03",
+        "name": "Tesla",
+        "picture": "https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2021/07/teslacars-1627280047.jpg",
+        "resalePrice": "85000",
+        "originalPrice": "95000",
+        "useYears": "3",
+        "sellerName": "Antony"
+    }
+]

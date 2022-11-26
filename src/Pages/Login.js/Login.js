@@ -1,13 +1,38 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
+    const navigate= useNavigate()
+    
+    const { signIn, googleLogin }= useContext(AuthContext)
 
-    const handleLoginForm = event =>{
-        event.preventDefault()
+    const handleLoginForm = data => {
+        console.log(data);
+        setLoginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+               
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message);
+            });
+    }
+
+    const handleLoginWithGoogle = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(err => console.error(err));
     }
 
     return (
@@ -64,7 +89,7 @@ const Login = () => {
                 </form>
                 <p>New to verse reseller <Link className='text-secondary' to="/signup">Create new Account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>LOGIN WITH GOOGLE</button>
+                <button onClick={handleLoginWithGoogle} className='btn btn-outline w-full'>LOGIN WITH GOOGLE</button>
             </div>
         </div>
     );
