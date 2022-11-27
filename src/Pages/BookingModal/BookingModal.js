@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const BookingModal = ({ productItem, setProductItem, }) => {
     const {user}= useContext(AuthContext)
-    const { name: productName, resalePrice,  }= productItem
+    const { name: productName, resalePrice, picture }= productItem
     console.log(productItem);
 
     const handleBooking = event => {
@@ -12,6 +12,7 @@ const BookingModal = ({ productItem, setProductItem, }) => {
         const form = event.target;
         const name = form.name.value;
         const price = form.price.value;
+        const image = form.image.value;
         const email = form.email.value;
         const phone = form.phone.value;
         const location = form.location.value;
@@ -19,6 +20,7 @@ const BookingModal = ({ productItem, setProductItem, }) => {
         const booking = {
             name,
             price,
+            image,
             email,
             phone,
             location
@@ -58,6 +60,7 @@ const BookingModal = ({ productItem, setProductItem, }) => {
                         <input name='name' type="text" disabled value={productName} className="input w-full input-bordered " />
                         
                         <input name="price" type="text" defaultValue={resalePrice} disabled placeholder="Your Name" className="input w-full input-bordered" />
+                        <input name="image" type="text" defaultValue={picture} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
                         <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
                         <input name="location" type="text" placeholder="Location" className="input w-full input-bordered" />
