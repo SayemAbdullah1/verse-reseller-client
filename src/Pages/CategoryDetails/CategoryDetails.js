@@ -8,7 +8,7 @@ const CategoryDetails = () => {
     const [productItem, setProductItem] = useState(null)
     return (
         <div>
-            <div className="text-6xl text-center text-secondary font-bold my-10">Product Details</div>
+            <div className="text-6xl text-center text-secondary font-bold mt-12 mb-8">Product Details</div>
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:mx-52 sm:mx-auto mx-auto'>
                 {
                     categoryData.map(category => <SingleCategory key={category._id}
