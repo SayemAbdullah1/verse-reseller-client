@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 
@@ -8,7 +8,8 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUPError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('')
-    const { createUser }= useContext(AuthContext)
+    const { createUser, updateUser }= useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleSignUp = (data) => {
         setSignUPError('');
@@ -18,11 +19,36 @@ const SignUp = () => {
                 console.log(user);
                 toast('User Created Successfully.')
                 
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email);
+                    })
+                    .catch(err => console.log(err));
+                
             })
             .catch(error => {
                 console.log(error)
                 setSignUPError(error.message)
             });
+    }
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                navigate('/')
+                // setCreatedUserEmail(email);
+            })
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -50,6 +76,11 @@ const SignUp = () => {
                             minLength: { value: 6, message: "Password must be 6 characters long" }
                             
                         })} className="input input-bordered w-full max-w-xs" />
+                        <label>
+                            <input type="checkbox" className="checkbox" value='User' checked />
+                            <p>User</p>
+                        </label>
+
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
                     <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />

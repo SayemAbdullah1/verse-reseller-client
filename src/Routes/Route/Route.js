@@ -4,6 +4,7 @@ import DashBoardLayout from '../../Layout/DashBoardLayout';
 import Main from '../../Layout/Main';
 import CategoryDetails from '../../Pages/CategoryDetails/CategoryDetails';
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
+import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts';
 import Orders from '../../Pages/Dashboard/Orders/Orders';
 import Category from '../../Pages/Home/Category/Category';
 import Home from '../../Pages/Home/Home/Home';
@@ -54,6 +55,10 @@ const route = createBrowserRouter([
         {
             path: '/dashboard/allusers',
             element: <AllUsers></AllUsers>
+        },
+        {
+            path: '/dashboard/myproducts',
+            element: <MyProducts></MyProducts>
         }
     ]
 }
