@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-const AllUsers = () => {
+const AllBuyers = () => {
     const { data: allusers = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
@@ -26,15 +26,15 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            allusers.map((user, i) => 
-                                user?.role === 'seller' &&
-                            <tr key={user._id}>
-                                <th>{}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                                <td><button className='btn btn-xs bg-red-600'>Delete</button></td>
-                            </tr>)
+                            allusers.map((user, i) =>
+                                user?.role === 'buyer' &&
+                                <tr key={user._id}>
+                                    <th>{ }</th>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role}</td>
+                                    <td><button className='btn btn-xs bg-red-600'>Delete</button></td>
+                                </tr>)
                         }
 
                     </tbody>
@@ -44,4 +44,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default AllBuyers;

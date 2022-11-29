@@ -24,7 +24,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err));
                 
@@ -35,8 +35,8 @@ const SignUp = () => {
             });
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -76,9 +76,10 @@ const SignUp = () => {
                             minLength: { value: 6, message: "Password must be 6 characters long" }
                             
                         })} className="input input-bordered w-full max-w-xs" />
-                        <label>
-                            <input type="checkbox" className="checkbox" value='User' checked />
-                            <p>User</p>
+                        <label required>
+                            <input type="radio" {...register("role")} value="buyer" name="user" checked/> Buyer
+                            <br />
+                            <input type="radio" {...register("role")} value="seller" name="user" checked/> Seller
                         </label>
 
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}

@@ -65,27 +65,6 @@ const Login = () => {
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
 
-                    <div className="form-control w-full max-w-xs">
-                       
-                        <div className='flex'>
-                            <input type="radio" name="buyer" className="radio" checked
-                                {...register("Buyer", {
-                                  
-                                })}
-                            />
-                            <span>Buyer</span>
-                        </div>
-                        <div className='flex'>
-                            <input type="radio" name="seller" className="radio"
-                                {...register("Seller", {
-                                
-                                })}
-                            />
-                            <span>Seller</span>
-                        </div>
-                             
-                        
-                    </div>
                     <input className='btn btn-accent w-full' value="Login" type="submit" />
                     <div>
                         {loginError && <p className='text-red-600'>{loginError}</p>}
