@@ -1,14 +1,16 @@
 import userEvent from '@testing-library/user-event';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const navigate = useNavigate()
     const {user, logOut} = useContext(AuthContext)
 
     const handleLogOut = () => {
         logOut()
             .then(() => { })
+            navigate('/login')
             .catch(err => console.log(err));
     }
 

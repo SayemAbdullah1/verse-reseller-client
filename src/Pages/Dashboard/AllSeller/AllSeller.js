@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-const AllUsers = () => {
-    const { data: allusers = [] } = useQuery({
+const AllSeller = () => {
+    const { data: sellers = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users');
@@ -12,7 +12,7 @@ const AllUsers = () => {
     });
     return (
         <div>
-            <h3 className="text-3xl mb-5 mt-3 text-secondary text-center">All users</h3>
+            <h3 className="text-3xl mb-5 mt-3 text-secondary text-center">All Sellers</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
@@ -21,20 +21,22 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Verification</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            allusers.map((user, i) => 
-                                user?.role === 'seller' &&
-                            <tr key={user._id}>
-                                <th>{}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                                <td><button className='btn btn-xs bg-red-600'>Delete</button></td>
-                            </tr>)
+                            sellers.map((seller, i) =>
+                                seller?.role === 'seller' &&
+                                <tr key={seller._id}>
+                                    <th>{ }</th>
+                                    <td>{seller.name}</td>
+                                    <td>{seller.email}</td>
+                                    <td>{seller.role}</td>
+                                    <td><button className='btn btn-xs bg-accent'>Verify</button></td>
+                                    <td><button className='btn btn-xs bg-red-600'>Delete</button></td>
+                                </tr>)
                         }
 
                     </tbody>
@@ -44,4 +46,5 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+
+export default AllSeller;

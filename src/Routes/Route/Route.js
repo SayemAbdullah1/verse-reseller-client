@@ -4,7 +4,8 @@ import DashBoardLayout from '../../Layout/DashBoardLayout';
 import Main from '../../Layout/Main';
 import CategoryDetails from '../../Pages/CategoryDetails/CategoryDetails';
 import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
-import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
+import AllSeller from '../../Pages/Dashboard/AllSeller/AllSeller';
+// import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts';
 import Orders from '../../Pages/Dashboard/Orders/Orders';
 import Category from '../../Pages/Home/Category/Category';
@@ -13,6 +14,7 @@ import Login from '../../Pages/Login.js/Login';
 import Blog from '../../Pages/Shared/Blog/Blog';
 import ErrorPage from '../../Pages/Shared/ErrorPage/ErrorPage';
 import SignUp from '../../Pages/SignUp.js/SignUp';
+import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const route = createBrowserRouter([
@@ -54,12 +56,12 @@ const route = createBrowserRouter([
             element: <Orders></Orders>
         },
         {
-            path: '/dashboard/allusers',
-            element: <AllUsers></AllUsers>
+            path: '/dashboard/allseller',
+            element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
         },
         {
             path: '/dashboard/allbuyer',
-            element: <AllBuyers></AllBuyers>
+            element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
         },
         {
             path: '/dashboard/myproducts',
