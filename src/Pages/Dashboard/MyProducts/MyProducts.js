@@ -1,11 +1,13 @@
 import React, {  } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Shared/Loading/Loading';
+import toast from 'react-hot-toast';
 
 const MyProducts = () => {
 
     const url = `http://localhost:5000/allProducts`;
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -15,6 +17,24 @@ const MyProducts = () => {
             return data;
         }
     })
+    const handleDeleteProduct = product => {
+        fetch(`http://localhost:5000//allProducts/seller/${product._id}`, {
+            method: 'DELETE'
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`deleted successfully`)
+                }
+            })
+    }
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         
         <div>
@@ -45,7 +65,7 @@ const MyProducts = () => {
                                 <td>{product.name}</td>
                                 <td>${product.resalePrice}</td>
                                 <td>
-                                    <button
+                                    <button onClick={() => handleDeleteProduct(product)}
                                         className='btn btn-secondary btn-sm'
                                     >Delete</button>
                                    

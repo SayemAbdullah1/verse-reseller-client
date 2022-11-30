@@ -36,15 +36,15 @@ const Login = () => {
             });
     }
 
-    const handleLoginWithGoogle = () => {
-        googleLogin()
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                navigate('/')
-            })
-            .catch(err => console.error(err));
-    }
+    // const handleLoginWithGoogle = () => {
+    //     googleLogin()
+    //         .then(result => {
+    //             const user = result.user;
+    //             console.log(user);
+    //             navigate('/')
+    //         })
+    //         .catch(err => console.error(err));
+    // }
 
     return (
         <div className='h-[700px] flex justify-center items-center'>
@@ -78,8 +78,8 @@ const Login = () => {
                     </div>
                 </form>
                 <p>New to verse reseller <Link className='text-secondary' to="/signup">Create new Account</Link></p>
-                <div className="divider">OR</div>
-                <button onClick={handleLoginWithGoogle} className='btn btn-outline w-full'>LOGIN WITH GOOGLE</button>
+                {/* <div className="divider">OR</div>
+                <button onClick={handleLoginWithGoogle} className='btn btn-outline w-full'>LOGIN WITH GOOGLE</button> */}
             </div>
         </div>
     );

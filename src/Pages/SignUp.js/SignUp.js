@@ -31,6 +31,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role);
+                        navigate('/')
                     })
                     .catch(err => console.log(err));
                 
@@ -99,7 +100,7 @@ const SignUp = () => {
                             minLength: { value: 6, message: "Password must be 6 characters long" }
                             
                         })} className="input input-bordered w-full max-w-xs" />
-                        <select type="password" {...register("role", {
+                        <select type="text" {...register("role", {
                             required: "Role is required",
                             
                         })}
@@ -107,11 +108,6 @@ const SignUp = () => {
                             <option selected>seller</option>
                             <option >buyer</option>
                         </select>
-
-                            
-                            {/* <input type="radio" {...register("role")} value="buyer" name="user" checked/> Buyer
-                            <br />
-                            <input type="radio" {...register("role")} value="seller" name="user" checked/> Seller */}
                         
 
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
