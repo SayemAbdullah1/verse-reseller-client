@@ -10,7 +10,7 @@ const AllBuyers = () => {
     const closeModal = () => {
         setDeletingBuyer(null);
     }
-    const { data: buyers = [], isLoading, refetch } = useQuery({
+    const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users');
@@ -20,7 +20,7 @@ const AllBuyers = () => {
     });
 
     const handleDeleteBuyer = buyer => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`http://localhost:5000/users/admin/${buyer._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -54,14 +54,14 @@ const AllBuyers = () => {
                     </thead>
                     <tbody>
                         {
-                            buyers.map((user) =>
+                            users.map((user) =>
                                 user?.role === 'buyer' &&
                                 <tr key={user._id}>
                                     <th>{ }</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
-                                        <td><button onClick={() => handleDeleteBuyer(user)} className='btn btn-xs bg-red-600'>Delete</button></td>
+                                        <td><button onClick={() => handleDeleteBuyer(user)} className='btn btn-xs  bg-red-600' htmlFor="confirmation-modal">Delete</button></td>
                                 </tr>)
                         }
 
