@@ -82,11 +82,20 @@ const SignUp = () => {
                             minLength: { value: 6, message: "Password must be 6 characters long" }
                             
                         })} className="input input-bordered w-full max-w-xs" />
-                        <label required>
-                            <input type="radio" {...register("role")} value="buyer" name="user" checked/> Buyer
+                        <select type="password" {...register("role", {
+                            required: "Role is required",
+                            
+                        })}
+                        className='my-5'>
+                            <option selected>seller</option>
+                            <option >buyer</option>
+                        </select>
+
+                            
+                            {/* <input type="radio" {...register("role")} value="buyer" name="user" checked/> Buyer
                             <br />
-                            <input type="radio" {...register("role")} value="seller" name="user" checked/> Seller
-                        </label>
+                            <input type="radio" {...register("role")} value="seller" name="user" checked/> Seller */}
+                        
 
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>

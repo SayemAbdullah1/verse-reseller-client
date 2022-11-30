@@ -15,7 +15,9 @@ import Blog from '../../Pages/Shared/Blog/Blog';
 import ErrorPage from '../../Pages/Shared/ErrorPage/ErrorPage';
 import SignUp from '../../Pages/SignUp.js/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 const route = createBrowserRouter([
 {
@@ -65,7 +67,7 @@ const route = createBrowserRouter([
         },
         {
             path: '/dashboard/myproducts',
-            element: <MyProducts></MyProducts>
+            element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
         }
     ]
 }

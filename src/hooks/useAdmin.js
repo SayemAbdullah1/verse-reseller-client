@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useAdmin = email => {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -16,5 +16,4 @@ const useAdmin = email => {
     }, [email])
     return [isAdmin, isAdminLoading]
 }
-
 export default useAdmin;
