@@ -25,7 +25,7 @@ const AddProducts = () => {
             category_id
         }
 
-        fetch('http://localhost:5000/allProducts', {
+        fetch('https://verse-reseller-server.vercel.app/allProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

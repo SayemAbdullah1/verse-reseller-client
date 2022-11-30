@@ -13,14 +13,14 @@ const AllBuyers = () => {
     const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://verse-reseller-server.vercel.app/users');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteBuyer = buyer => {
-        fetch(`http://localhost:5000/users/admin/${buyer._id}`, {
+        fetch(`https://verse-reseller-server.vercel.app/users/admin/${buyer._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

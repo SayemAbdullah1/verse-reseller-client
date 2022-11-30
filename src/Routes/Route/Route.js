@@ -37,7 +37,7 @@ const route = createBrowserRouter([
         {
             path:'/category/:id',
             element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
-            loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            loader: ({ params }) => fetch(`https://verse-reseller-server.vercel.app/category/${params.id}`)
         },
         {
             path: '/login',

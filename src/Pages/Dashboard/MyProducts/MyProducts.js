@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const MyProducts = () => {
 
-    const url = `http://localhost:5000/allProducts`;
+    const url = `https://verse-reseller-server.vercel.app/allProducts`;
 
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['products'],
@@ -18,7 +18,7 @@ const MyProducts = () => {
         }
     })
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000//allProducts/seller/${product._id}`, {
+        fetch(`https://verse-reseller-server.vercel.app/allProducts/seller/${product._id}`, {
             method: 'DELETE'
 
         })
