@@ -54,8 +54,8 @@ const route = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
-            path: '/dashboard',
-            element: <Orders></Orders>
+            path: '/dashboard/order',
+            element: <BuyerRoute><Orders></Orders></BuyerRoute>
         },
         {
             path: '/dashboard/allseller',

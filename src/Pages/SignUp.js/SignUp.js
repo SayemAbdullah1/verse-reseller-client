@@ -10,7 +10,7 @@ const SignUp = () => {
     const [signUpError, setSignUPError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     // const [token] = useToken(createdUserEmail)
-    const { createUser, updateUser }= useContext(AuthContext)
+    const { createUser, updateUser, googleLogin }= useContext(AuthContext)
     const navigate = useNavigate()
 
     // if(token){
@@ -39,6 +39,23 @@ const SignUp = () => {
                 console.log(error)
                 setSignUPError(error.message)
             });
+    }
+    const handleLoginWithGoogle = (data) => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email, data.role === 'buyer');
+                    })
+                    .catch(err => console.log(err));
+                navigate('/')
+            })
+            .catch(err => console.error(err));
     }
 
     const saveUser = (name, email, role) => {
@@ -104,7 +121,7 @@ const SignUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>SIGNUP WITH GOOGLE</button>
+                <button className='btn btn-outline w-full' onClick={handleLoginWithGoogle}>SIGNUP WITH GOOGLE</button>
 
             </div>
         </div>
