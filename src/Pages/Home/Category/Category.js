@@ -11,7 +11,7 @@ const Category = () => {
             .then(category => setCategory(category))
     })
     return (
-        <div my-10>
+        <div className='my-10 mb-36'>
             <div className="text-5xl text-center font-bold text-secondary my-6">Products Category</div>
             <div className='gap-6 text-center grid grid-cols-1 w-52 mx-auto'>
                 {
