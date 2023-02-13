@@ -5,14 +5,15 @@ import CategoryCart from './CategoryCart';
 
 
 const Category = () => {
-    const [categories, setCategory] = useState(data)
+    // const categories = useLoaderData()
+    const [categories, setCategories] = useState([])
 
     
 
     useEffect( ()=>{
         fetch('https://verse-reseller-server.vercel.app/category')
             .then(res => res.json())
-            .then(data => setCategory(data)
+            .then(data => setCategories(data)
             )
         console.log(data);
     }, [])
@@ -22,24 +23,26 @@ const Category = () => {
             <div className="text-5xl mb-24 text-center font-bold text-secondary my-6">Products Category</div>
             <div className=' max-w-[1640px] mx-auto p-4 py-12 gap-6 text-center grid grid-cols-1 lg:grid-cols-3'>
                 {
-                    categories.map(singleCat => (
-                        <div className='rounded-xl relative'>
-                            <div className='absolute text-white bg-black/40 w-full h-full rounded-xl'>
-                                <p className='font-bold text-2xl px-2 pt-4 mb-6'>{singleCat.category}</p>
+                    categories.map(singleCat => 
+                        // (
+                    //     <>
+                    //         <div className='rounded-xl relative'>
+                    //             <div className='absolute text-white bg-black/40 w-full h-full rounded-xl'>
+                    //                 <p className='font-bold text-2xl px-2 pt-4 mb-6'>{singleCat.category}</p>
 
-                                <Link to={`/category/${singleCat.category_id}`}>
+                    //                 <Link to={`/category/${singleCat.category_id}`}>
 
-                                    <button className='btn btn-secondary border-white mt-3 text-black mx-2 bottom-4'>See All Products</button>
-                                </Link>
-                            </div>
-                            <img className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl' src={singleCat.image} alt="/" />
-                        </div>
-                    )
+                    //                     <button className='btn btn-secondary border-white mt-3 text-black mx-2 bottom-4'>See All Products</button>
+                    //                 </Link>
+                    //             </div>
+                    //             <img className='max-h-[160px] md:max-h-[200px] w-full object-cover rounded-xl' src={singleCat.image} alt="/" />
+                    //         </div></>
+                    // )
                     
-                    // <CategoryCart
-                    //     key={singleCat.category_id}
-                    // singleCat={singleCat}
-                    // ></CategoryCart>
+                    <CategoryCart
+                        key={singleCat.category_id}
+                    singleCat={singleCat}
+                    ></CategoryCart>
 
                     // <button className="btn btn-outline btn-info text-center gap-6 mx-6"
                     //     key={singleCat._id}>
